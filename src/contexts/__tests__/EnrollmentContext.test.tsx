@@ -23,7 +23,13 @@ const TestConsumer = () => {
       <span data-testid="email">{formData.step1?.email ?? ''}</span>
       <button onClick={nextStep}>Next</button>
       <button onClick={prevStep}>Prev</button>
-      <button onClick={() => updateFormData({ step1: { nama: 'John', nik: '', tanggalLahir: '', noHP: '', email: 'john@test.com' } })}>
+      <button onClick={() => updateFormData({ 
+        step1: { nama: 'John', nik: '123456', tanggalLahir: '1990-01-01', noHP: '081234567890', email: 'john@test.com' },
+        step2: { alamat: 'Jl. Test', kota: 'Jakarta', pekerjaan: 'Developer', penghasilan: 10000000 },
+        step3: { ktpFile: new File([''], 'ktp.jpg'), selfieFile: new File([''], 'selfie.jpg') },
+        bprId: 'bpr-1',
+        produkId: 'prod-1-1',
+      })}>
         Update
       </button>
       <button onClick={submitEnrollment}>Submit</button>
@@ -49,6 +55,7 @@ describe('EnrollmentContext', () => {
 
   test('nextStep advances step up to max 4', () => {
     renderWithContext()
+    fireEvent.click(screen.getByText('Update'))
     fireEvent.click(screen.getByText('Next'))
     expect(screen.getByTestId('step').textContent).toBe('2')
     fireEvent.click(screen.getByText('Next'))
@@ -61,6 +68,7 @@ describe('EnrollmentContext', () => {
 
   test('prevStep goes back to min 1', () => {
     renderWithContext()
+    fireEvent.click(screen.getByText('Update'))
     fireEvent.click(screen.getByText('Next'))
     fireEvent.click(screen.getByText('Next'))
     expect(screen.getByTestId('step').textContent).toBe('3')
@@ -81,6 +89,7 @@ describe('EnrollmentContext', () => {
 
   test('submitEnrollment sets isSubmitting and returns success', async () => {
     renderWithContext()
+    fireEvent.click(screen.getByText('Update'))
     fireEvent.click(screen.getByText('Submit'))
     expect(screen.getByTestId('submitting').textContent).toBe('yes')
     await waitFor(() => {
@@ -90,6 +99,7 @@ describe('EnrollmentContext', () => {
 
   test('submitEnrollment clears error on success', async () => {
     renderWithContext()
+    fireEvent.click(screen.getByText('Update'))
     fireEvent.click(screen.getByText('Submit'))
     await waitFor(() => {
       expect(screen.getByTestId('error').textContent).toBe('none')
@@ -98,8 +108,8 @@ describe('EnrollmentContext', () => {
 
   test('resetEnrollment resets all state', async () => {
     renderWithContext()
-    fireEvent.click(screen.getByText('Next'))
     fireEvent.click(screen.getByText('Update'))
+    fireEvent.click(screen.getByText('Next'))
     expect(screen.getByTestId('step').textContent).toBe('2')
     expect(screen.getByTestId('nama').textContent).toBe('John')
     fireEvent.click(screen.getByText('Reset'))

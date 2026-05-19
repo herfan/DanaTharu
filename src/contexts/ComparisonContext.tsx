@@ -1,5 +1,7 @@
-import { createContext, useContext, useCallback } from 'react'
+import { createContext, useContext, useCallback, useMemo } from 'react'
 import { useLocalStorage } from '../hooks/useLocalStorage'
+
+const MAX_COMPARISON_ITEMS = 3
 
 interface ComparisonContextType {
   comparisonList: string[]
@@ -7,7 +9,7 @@ interface ComparisonContextType {
   removeFromComparison: (productId: string) => void
   clearComparison: () => void
   isInComparison: (productId: string) => boolean
-  canAddMore: () => boolean
+  canAddMore: boolean
 }
 
 const ComparisonContext = createContext<ComparisonContextType | undefined>(undefined)
@@ -17,7 +19,7 @@ export function ComparisonProvider({ children }: { children: React.ReactNode }) 
 
   const addToComparison = useCallback((productId: string) => {
     setComparisonList(prev => {
-      if (prev.includes(productId) || prev.length >= 3) {
+      if (prev.includes(productId) || prev.length >= MAX_COMPARISON_ITEMS) {
         return prev
       }
       return [...prev, productId]
@@ -36,12 +38,19 @@ export function ComparisonProvider({ children }: { children: React.ReactNode }) 
     return comparisonList.includes(productId)
   }, [comparisonList])
 
-  const canAddMore = useCallback(() => {
-    return comparisonList.length < 3
-  }, [comparisonList])
+  const canAddMore = comparisonList.length < MAX_COMPARISON_ITEMS
+
+  const contextValue = useMemo(() => ({
+    comparisonList,
+    addToComparison,
+    removeFromComparison,
+    clearComparison,
+    isInComparison,
+    canAddMore,
+  }), [comparisonList, addToComparison, removeFromComparison, clearComparison, isInComparison, canAddMore])
 
   return (
-    <ComparisonContext.Provider value={{ comparisonList, addToComparison, removeFromComparison, clearComparison, isInComparison, canAddMore }}>
+    <ComparisonContext.Provider value={contextValue}>
       {children}
     </ComparisonContext.Provider>
   )

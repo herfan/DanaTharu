@@ -96,7 +96,7 @@ describe('useDebounce', () => {
       { initialProps: { value: { a: 1 } } }
     )
 
-    const newObj = { b: 2 }
+    const newObj = { a: 2, b: 2 }
     objectRerender({ value: newObj })
     act(() => {
       vi.advanceTimersByTime(100)

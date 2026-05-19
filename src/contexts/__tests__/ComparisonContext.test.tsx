@@ -7,7 +7,7 @@ const TestConsumer = () => {
   return (
     <div>
       <span data-testid="count">{comparisonList.length}</span>
-      <span data-testid="can-add">{canAddMore() ? 'yes' : 'no'}</span>
+      <span data-testid="can-add">{canAddMore ? 'yes' : 'no'}</span>
       <button onClick={() => addToComparison('product-1')}>Add 1</button>
       <button onClick={() => addToComparison('product-2')}>Add 2</button>
       <button onClick={() => addToComparison('product-3')}>Add 3</button>
