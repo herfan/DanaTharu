@@ -9,6 +9,9 @@ import BprDetailPage from './pages/BprDetailPage'
 import ComparisonPage from './pages/ComparisonPage'
 import CalculatorPage from './pages/CalculatorPage'
 import EnrollmentPage from './pages/EnrollmentPage'
+import TentangKamiPage from './pages/TentangKamiPage'
+import KebijakanPrivasiPage from './pages/KebijakanPrivasiPage'
+import SyaratKetentuanPage from './pages/SyaratKetentuanPage'
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
               <Route path="/bandingkan" element={<ComparisonPage />} />
               <Route path="/kalkulator" element={<CalculatorPage />} />
               <Route path="/daftar/:bprId/:produkId" element={<EnrollmentPage />} />
+              <Route path="/tentang" element={<TentangKamiPage />} />
+              <Route path="/privasi" element={<KebijakanPrivasiPage />} />
+              <Route path="/syarat" element={<SyaratKetentuanPage />} />
             </Routes>
           </main>
           <Footer />

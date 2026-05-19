@@ -18,13 +18,13 @@ describe('CatalogPage', () => {
   describe('Search', () => {
     test('renders search input', () => {
       renderWithProviders()
-      expect(screen.getByPlaceholderText(/cari bpr/i)).toBeInTheDocument()
+      expect(screen.getByRole('textbox', { name: /cari bpr/i })).toBeInTheDocument()
     })
 
     test('filters BPRs by name when searching', async () => {
       const user = userEvent.setup()
       renderWithProviders()
-      const searchInput = screen.getByPlaceholderText(/cari bpr/i)
+      const searchInput = screen.getByRole('textbox', { name: /cari bpr/i })
       await user.type(searchInput, 'Artaloka')
       await waitFor(() => {
         expect(screen.getByText('BPR Artaloka')).toBeInTheDocument()
@@ -35,7 +35,7 @@ describe('CatalogPage', () => {
     test('filters BPRs by city when searching', async () => {
       const user = userEvent.setup()
       renderWithProviders()
-      const searchInput = screen.getByPlaceholderText(/cari bpr/i)
+      const searchInput = screen.getByRole('textbox', { name: /cari bpr/i })
       await user.type(searchInput, 'Bandung')
       await waitFor(() => {
         expect(screen.getByText('BPR Syariah Amanah Umat')).toBeInTheDocument()
@@ -152,7 +152,7 @@ describe('CatalogPage', () => {
     test('shows message when no BPRs match search', async () => {
       const user = userEvent.setup()
       renderWithProviders()
-      const searchInput = screen.getByPlaceholderText(/cari bpr/i)
+      const searchInput = screen.getByRole('textbox', { name: /cari bpr/i })
       await user.type(searchInput, 'xyznonexistent')
       await waitFor(() => {
         expect(screen.getByText(/tidak ada bpr yang ditemukan/i)).toBeInTheDocument()
