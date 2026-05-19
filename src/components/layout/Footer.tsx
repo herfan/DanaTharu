@@ -9,7 +9,7 @@ export default function Footer() {
           <div>
             <h3 className="sr-only">Danatharu</h3>
             <div className="flex items-center mb-4">
-              <img src="/danatharu-logo.png" alt="Danatharu" className="h-8 w-auto" />
+              <img src="/danatharu-logo.png" alt="Danatharu" className="h-10 w-auto" />
               <span className="ml-2 text-danatharu-gold font-serif text-xl font-bold">Danatharu</span>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
