@@ -32,7 +32,7 @@ export function EnrollmentProvider({ children }: { children: React.ReactNode }) 
       case 3:
         return !!(data.step3?.ktpFile && data.step3?.selfieFile)
       case 4:
-        return !!(data.bprId && data.produkId)
+        return !!(data.bprId && data.produkId && (data as any).step4?.agreed)
       default:
         return false
     }
