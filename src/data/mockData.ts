@@ -1,69 +1,7 @@
 import type { BPR, ProdukDeposito } from '../types';
 
-const mockBprs: BPR[] = [
-  {
-    id: 'bpr-1',
-    nama: 'BPR Artaloka',
-    kota: 'Denpasar',
-    provinsi: 'Bali',
-    logo: '/logos/artaloka.png',
-    rating: 4.5,
-    jumlahNasabah: 12500,
-    terdaftarOJK: true,
-    dijaminLPS: true,
-    produkDeposito: [],
-  },
-  {
-    id: 'bpr-2',
-    nama: 'BPR Dana Mulia',
-    kota: 'Jakarta',
-    provinsi: 'DKI Jakarta',
-    logo: '/logos/danamulia.png',
-    rating: 4.3,
-    jumlahNasabah: 8700,
-    terdaftarOJK: true,
-    dijaminLPS: true,
-    produkDeposito: [],
-  },
-  {
-    id: 'bpr-3',
-    nama: 'BPR Syariah Amanah Umat',
-    kota: 'Bandung',
-    provinsi: 'Jawa Barat',
-    logo: '/logos/amanahumat.png',
-    rating: 4.7,
-    jumlahNasabah: 15200,
-    terdaftarOJK: true,
-    dijaminLPS: true,
-    produkDeposito: [],
-  },
-  {
-    id: 'bpr-4',
-    nama: 'BPR Artha Sentosa',
-    kota: 'Surabaya',
-    provinsi: 'Jawa Timur',
-    logo: '/logos/arthasentosa.png',
-    rating: 4.1,
-    jumlahNasabah: 6300,
-    terdaftarOJK: true,
-    dijaminLPS: true,
-    produkDeposito: [],
-  },
-  {
-    id: 'bpr-5',
-    nama: 'BPR Syariah Berkah Madani',
-    kota: 'Yogyakarta',
-    provinsi: 'DI Yogyakarta',
-    logo: '/logos/berkahmadani.png',
-    rating: 4.6,
-    jumlahNasabah: 9800,
-    terdaftarOJK: true,
-    dijaminLPS: true,
-    produkDeposito: [],
-  },
-];
-
 const mockProducts: ProdukDeposito[] = [
+  // BPR Artaloka products
   {
     id: 'prod-1-1',
     bprId: 'bpr-1',
@@ -94,6 +32,7 @@ const mockProducts: ProdukDeposito[] = [
     jenis: 'Konvensional',
     catatan: 'Deposito 12 bulan dengan bunga maksimal',
   },
+  // BPR Dana Mulia products
   {
     id: 'prod-2-1',
     bprId: 'bpr-2',
@@ -124,6 +63,7 @@ const mockProducts: ProdukDeposito[] = [
     jenis: 'Konvensional',
     catatan: 'Deposito jangka panjang dengan bunga tertinggi',
   },
+  // BPR Syariah Amanah Umat products
   {
     id: 'prod-3-1',
     bprId: 'bpr-3',
@@ -154,6 +94,7 @@ const mockProducts: ProdukDeposito[] = [
     jenis: 'Syariah',
     catatan: 'Deposito syariah bagi hasil 12 bulan',
   },
+  // BPR Artha Sentosa products
   {
     id: 'prod-4-1',
     bprId: 'bpr-4',
@@ -162,7 +103,7 @@ const mockProducts: ProdukDeposito[] = [
     minimalSetoran: 2_000_000,
     maksimalSetoran: 75_000_000,
     jenis: 'Konvensional',
-    catatan: 'Deposito 3 bunga stabil',
+    catatan: 'Deposito 3 bulan dengan bunga stabil',
   },
   {
     id: 'prod-4-2',
@@ -174,6 +115,7 @@ const mockProducts: ProdukDeposito[] = [
     jenis: 'Konvensional',
     catatan: 'Deposito 6 bulan dengan bonus nasabah baru',
   },
+  // BPR Syariah Berkah Madani products
   {
     id: 'prod-5-1',
     bprId: 'bpr-5',
@@ -206,11 +148,70 @@ const mockProducts: ProdukDeposito[] = [
   },
 ];
 
-mockBprs.forEach((bpr) => {
-  bpr.produkDeposito = mockProducts.filter((p) => p.bprId === bpr.id);
-});
+const mockBprs: BPR[] = [
+  {
+    id: 'bpr-1',
+    nama: 'BPR Artaloka',
+    kota: 'Denpasar',
+    provinsi: 'Bali',
+    logo: '/logos/artaloka.png',
+    rating: 4.5,
+    jumlahNasabah: 12500,
+    terdaftarOJK: true,
+    dijaminLPS: true,
+    produkDeposito: mockProducts.filter((p) => p.bprId === 'bpr-1'),
+  },
+  {
+    id: 'bpr-2',
+    nama: 'BPR Dana Mulia',
+    kota: 'Jakarta',
+    provinsi: 'DKI Jakarta',
+    logo: '/logos/danamulia.png',
+    rating: 4.3,
+    jumlahNasabah: 8700,
+    terdaftarOJK: true,
+    dijaminLPS: true,
+    produkDeposito: mockProducts.filter((p) => p.bprId === 'bpr-2'),
+  },
+  {
+    id: 'bpr-3',
+    nama: 'BPR Syariah Amanah Umat',
+    kota: 'Bandung',
+    provinsi: 'Jawa Barat',
+    logo: '/logos/amanahumat.png',
+    rating: 4.7,
+    jumlahNasabah: 15200,
+    terdaftarOJK: true,
+    dijaminLPS: true,
+    produkDeposito: mockProducts.filter((p) => p.bprId === 'bpr-3'),
+  },
+  {
+    id: 'bpr-4',
+    nama: 'BPR Artha Sentosa',
+    kota: 'Surabaya',
+    provinsi: 'Jawa Timur',
+    logo: '/logos/arthasentosa.png',
+    rating: 4.1,
+    jumlahNasabah: 6300,
+    terdaftarOJK: true,
+    dijaminLPS: true,
+    produkDeposito: mockProducts.filter((p) => p.bprId === 'bpr-4'),
+  },
+  {
+    id: 'bpr-5',
+    nama: 'BPR Syariah Berkah Madani',
+    kota: 'Yogyakarta',
+    provinsi: 'DI Yogyakarta',
+    logo: '/logos/berkahmadani.png',
+    rating: 4.6,
+    jumlahNasabah: 9800,
+    terdaftarOJK: true,
+    dijaminLPS: true,
+    produkDeposito: mockProducts.filter((p) => p.bprId === 'bpr-5'),
+  },
+];
 
-export function getAllBpr(): BPR[] {
+export function getAllBpr(): readonly BPR[] {
   return mockBprs;
 }
 
@@ -218,7 +219,7 @@ export function getBprById(id: string): BPR | undefined {
   return mockBprs.find((bpr) => bpr.id === id);
 }
 
-export function getAllProducts(): ProdukDeposito[] {
+export function getAllProducts(): readonly ProdukDeposito[] {
   return mockProducts;
 }
 
@@ -231,6 +232,7 @@ export function getProductById(id: string): ProdukDeposito | undefined {
 }
 
 export function searchBpr(query: string): BPR[] {
+  if (!query.trim()) return [];
   const lowerQuery = query.toLowerCase();
   return mockBprs.filter(
     (bpr) =>
@@ -244,7 +246,7 @@ export function filterProducts(filters: {
   minRate?: number;
   maxRate?: number;
   tenure?: number[];
-}): ProdukDeposito[] {
+} = {}): ProdukDeposito[] {
   return mockProducts.filter((product) => {
     if (filters.minRate !== undefined && product.sukuBunga < filters.minRate) {
       return false;
