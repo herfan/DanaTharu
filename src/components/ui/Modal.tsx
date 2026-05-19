@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useRef } from 'react'
+import { useEffect, useCallback, useRef, useId } from 'react'
 import type { ReactNode } from 'react'
 
 export interface ModalProps {
@@ -25,6 +25,7 @@ export function Modal({
 }: ModalProps) {
   const modalRef = useRef<HTMLDivElement>(null)
   const previousOverflow = useRef<string>('')
+  const titleId = useId()
 
   const handleBackdropClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
@@ -63,8 +64,6 @@ export function Modal({
   }, [isOpen])
 
   if (!isOpen) return null
-
-  const titleId = `modal-title-${Math.random().toString(36).slice(2)}`
 
   return (
     <div

@@ -22,16 +22,24 @@ export function RangeSlider({
   const [localValues, setLocalValues] = useState<[number, number]>(values)
 
   const handleMinChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = Math.min(Number(e.target.value), localValues[1])
-    setLocalValues([newValue, localValues[1]])
-    onChange([newValue, localValues[1]])
-  }, [localValues[1], onChange])
+    const newValue = Number(e.target.value)
+    setLocalValues(prev => {
+      const constrained = Math.min(newValue, prev[1])
+      const newValues: [number, number] = [constrained, prev[1]]
+      onChange(newValues)
+      return newValues
+    })
+  }, [onChange])
 
   const handleMaxChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = Math.max(Number(e.target.value), localValues[0])
-    setLocalValues([localValues[0], newValue])
-    onChange([localValues[0], newValue])
-  }, [localValues[0], onChange])
+    const newValue = Number(e.target.value)
+    setLocalValues(prev => {
+      const constrained = Math.max(newValue, prev[0])
+      const newValues: [number, number] = [prev[0], constrained]
+      onChange(newValues)
+      return newValues
+    })
+  }, [onChange])
 
   const handleMinKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
     let newValue = localValues[0]

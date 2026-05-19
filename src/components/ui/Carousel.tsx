@@ -20,6 +20,7 @@ export function Carousel({
 }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [touchStart, setTouchStart] = useState<number | null>(null)
+  const [isPaused, setIsPaused] = useState(false)
   const carouselRef = useRef<HTMLDivElement>(null)
   const slides = Array.isArray(children) ? children : [children]
 
@@ -54,20 +55,17 @@ export function Carousel({
   }, [touchStart, goToNext, goToPrevious])
 
   useEffect(() => {
-    if (!autoPlay) return
+    if (!autoPlay || isPaused) return
     const timer = setInterval(goToNext, interval)
     return () => clearInterval(timer)
-  }, [autoPlay, interval, goToNext])
+  }, [autoPlay, interval, goToNext, isPaused])
 
   return (
     <div
       data-testid="carousel-wrapper"
       className={`relative overflow-hidden ${className}`}
-      onMouseEnter={(e) => {
-        if (autoPlay && carouselRef.current) {
-          carouselRef.current.dispatchEvent(new Event('pause'))
-        }
-      }}
+      onMouseEnter={() => autoPlay && setIsPaused(true)}
+      onMouseLeave={() => autoPlay && setIsPaused(false)}
     >
       <div
         data-testid="carousel-container"
