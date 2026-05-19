@@ -114,9 +114,10 @@ export default function CatalogPage() {
 
         {/* Filters */}
         <div className="bg-white rounded-xl shadow-md p-6 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
             <Input
-              placeholder="Cari BPR..."
+              label="Cari BPR"
+              placeholder="Cari berdasarkan nama atau kota..."
               value={search}
               onChange={handleSearchChange}
               aria-label="Cari BPR"
