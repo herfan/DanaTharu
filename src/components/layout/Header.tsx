@@ -1,6 +1,30 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useComparison } from '../../contexts/ComparisonContext'
+
+const navLinks = [
+  { to: '/', label: 'Beranda' },
+  { to: '/marketplace', label: 'Marketplace' },
+  { to: '/kalkulator', label: 'Kalkulator' },
+]
+
+function NavLink({ to, label, mobile = false, onClick }: { to: string; label: string; mobile?: boolean; onClick?: () => void }) {
+  const location = useLocation()
+  const isActive = location.pathname === to
+
+  const baseClasses = mobile
+    ? `font-medium py-2 transition-colors duration-200 ${isActive ? 'text-danatharu-gold font-semibold' : 'text-white hover:text-danatharu-gold'}`
+    : `font-medium transition-colors duration-200 relative ${isActive ? 'text-danatharu-gold' : 'text-white hover:text-danatharu-gold'}`
+
+  return (
+    <Link to={to} className={baseClasses} onClick={onClick}>
+      {label}
+      {!mobile && isActive && (
+        <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-danatharu-gold rounded-full" />
+      )}
+    </Link>
+  )
+}
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -19,12 +43,9 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8" aria-label="Main navigation">
-            <Link to="/marketplace" className="text-white hover:text-danatharu-gold transition-colors duration-200 font-medium">
-              Marketplace
-            </Link>
-            <Link to="/kalkulator" className="text-white hover:text-danatharu-gold transition-colors duration-200 font-medium">
-              Kalkulator
-            </Link>
+            {navLinks.map((link) => (
+              <NavLink key={link.to} to={link.to} label={link.label} />
+            ))}
           </nav>
 
           {/* Right Side */}
@@ -64,20 +85,15 @@ export default function Header() {
         {mobileMenuOpen && (
           <nav className="md:hidden py-4 border-t border-danatharu-gold border-opacity-30" aria-label="Mobile menu">
             <div className="flex flex-col space-y-3">
-              <Link
-                to="/marketplace"
-                className="text-white hover:text-danatharu-gold transition-colors duration-200 font-medium py-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Marketplace
-              </Link>
-              <Link
-                to="/kalkulator"
-                className="text-white hover:text-danatharu-gold transition-colors duration-200 font-medium py-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Kalkulator
-              </Link>
+              {navLinks.map((link) => (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  label={link.label}
+                  mobile
+                  onClick={() => setMobileMenuOpen(false)}
+                />
+              ))}
               <Link
                 to="/bandingkan"
                 className="relative px-0 py-2 bg-danatharu-gold text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-200"

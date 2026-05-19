@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { Button } from '../components/ui/Button'
 import { Card } from '../components/ui/Card'
 import { Badge } from '../components/ui/Badge'
-import { Carousel } from '../components/ui/Carousel'
 import { getAllBpr } from '../data/mockData'
 
 function getTopBprsByRate(count: number) {
@@ -102,21 +101,21 @@ export default function LandingPage() {
           <p className="text-center text-sm font-medium text-gray-500 uppercase tracking-wider mb-8">
             Dipercaya oleh BPR-BPR Terbaik di Indonesia
           </p>
-          <Carousel autoPlay interval={4000} showArrows={false} showDots={false}>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
             {getAllBpr().map((bpr) => (
-              <div key={bpr.id} className="flex items-center justify-center px-8 py-4">
+              <div key={bpr.id} className="flex items-center justify-center">
                 <div className="text-center">
-                  <div className="w-20 h-20 mx-auto mb-3 bg-gray-100 rounded-full flex items-center justify-center">
-                    <span className="text-2xl font-bold text-danatharu-green">
+                  <div className="w-16 h-16 mx-auto mb-2 bg-gray-100 rounded-full flex items-center justify-center">
+                    <span className="text-xl font-bold text-danatharu-green">
                       {bpr.nama.split(' ').slice(0, 2).map(w => w[0]).join('')}
                     </span>
                   </div>
-                  <p className="text-sm font-semibold text-danatharu-blue">{bpr.nama}</p>
+                  <p className="text-xs font-semibold text-danatharu-blue truncate">{bpr.nama}</p>
                   <p className="text-xs text-gray-500">{bpr.kota}</p>
                 </div>
               </div>
             ))}
-          </Carousel>
+          </div>
         </div>
       </section>
 
