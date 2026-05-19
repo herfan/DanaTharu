@@ -17,15 +17,15 @@ describe('Badge', () => {
   test('applies success variant styles', () => {
     render(<Badge variant="success">Success</Badge>)
     const badge = screen.getByText('Success')
-    expect(badge).toHaveClass('bg-green-100')
-    expect(badge).toHaveClass('text-green-800')
+    expect(badge).toHaveClass('bg-danatharu-green/10')
+    expect(badge).toHaveClass('text-danatharu-green')
   })
 
   test('applies warning variant styles', () => {
     render(<Badge variant="warning">Warning</Badge>)
     const badge = screen.getByText('Warning')
-    expect(badge).toHaveClass('bg-yellow-100')
-    expect(badge).toHaveClass('text-yellow-800')
+    expect(badge).toHaveClass('bg-danatharu-gold/10')
+    expect(badge).toHaveClass('text-danatharu-gold')
   })
 
   test('applies error variant styles', () => {
@@ -38,8 +38,8 @@ describe('Badge', () => {
   test('applies info variant styles', () => {
     render(<Badge variant="info">Info</Badge>)
     const badge = screen.getByText('Info')
-    expect(badge).toHaveClass('bg-blue-100')
-    expect(badge).toHaveClass('text-blue-800')
+    expect(badge).toHaveClass('bg-danatharu-blue/10')
+    expect(badge).toHaveClass('text-danatharu-blue')
   })
 
   test('applies pill shape with rounded-full', () => {

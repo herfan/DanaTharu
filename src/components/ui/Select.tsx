@@ -23,6 +23,7 @@ export function Select({
   ...rest
 }: SelectProps) {
   const selectId = id || `select-${label?.toLowerCase().replace(/\s+/g, '-')}`
+  const descriptionId = `${selectId}-description`
 
   return (
     <div className="w-full">
@@ -36,6 +37,8 @@ export function Select({
         id={selectId}
         disabled={disabled}
         required={required}
+        aria-describedby={error ? descriptionId : undefined}
+        aria-invalid={!!error}
         className={`
           w-full px-4 py-2 border rounded-lg transition-all duration-200
           focus:outline-none focus:ring-2 focus:ring-danatharu-gold focus:border-transparent
@@ -52,7 +55,7 @@ export function Select({
         ))}
       </select>
       {error && (
-        <p className="mt-1 text-sm text-red-500">{error}</p>
+        <p id={descriptionId} className="mt-1 text-sm text-red-500">{error}</p>
       )}
     </div>
   )
