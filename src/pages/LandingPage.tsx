@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Button } from '../components/ui/Button'
 import { Card } from '../components/ui/Card'
 import { Badge } from '../components/ui/Badge'
+import { Carousel } from '../components/ui/Carousel'
 import { getAllBpr } from '../data/mockData'
 
 function getTopBprsByRate(count: number) {
@@ -92,6 +93,30 @@ export default function LandingPage() {
               <p className="text-gray-600 text-sm">Daftar dan buka deposito secara online tanpa perlu datang ke kantor cabang</p>
             </Card>
           </div>
+        </div>
+      </section>
+
+      {/* BPR Partners Carousel Section */}
+      <section className="py-12 bg-white border-y border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-sm font-medium text-gray-500 uppercase tracking-wider mb-8">
+            Dipercaya oleh BPR-BPR Terbaik di Indonesia
+          </p>
+          <Carousel autoPlay interval={4000} showArrows={false} showDots={false}>
+            {getAllBpr().map((bpr) => (
+              <div key={bpr.id} className="flex items-center justify-center px-8 py-4">
+                <div className="text-center">
+                  <div className="w-20 h-20 mx-auto mb-3 bg-gray-100 rounded-full flex items-center justify-center">
+                    <span className="text-2xl font-bold text-danatharu-green">
+                      {bpr.nama.split(' ').slice(0, 2).map(w => w[0]).join('')}
+                    </span>
+                  </div>
+                  <p className="text-sm font-semibold text-danatharu-blue">{bpr.nama}</p>
+                  <p className="text-xs text-gray-500">{bpr.kota}</p>
+                </div>
+              </div>
+            ))}
+          </Carousel>
         </div>
       </section>
 
