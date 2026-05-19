@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useComparison } from '../../contexts/ComparisonContext'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { comparisonList } = useComparison()
+  const comparisonCount = comparisonList.length
 
   return (
     <header className="sticky top-0 z-50 bg-danatharu-green shadow-lg" role="banner">
@@ -26,12 +29,17 @@ export default function Header() {
 
           {/* Right Side */}
           <div className="flex items-center space-x-4">
-            <button
-              type="button"
-              className="hidden md:inline-flex items-center px-4 py-2 bg-danatharu-gold text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-danatharu-gold"
+            <Link
+              to="/bandingkan"
+              className="hidden md:inline-flex items-center px-4 py-2 bg-danatharu-gold text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-danatharu-gold relative"
             >
               Bandingkan
-            </button>
+              {comparisonCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+                  {comparisonCount}
+                </span>
+              )}
+            </Link>
 
             {/* Mobile Hamburger */}
             <button
@@ -70,13 +78,18 @@ export default function Header() {
               >
                 Kalkulator
               </Link>
-              <button
-                type="button"
-                className="text-left px-0 py-2 bg-danatharu-gold text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-200"
+              <Link
+                to="/bandingkan"
+                className="relative px-0 py-2 bg-danatharu-gold text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-200"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Bandingkan
-              </button>
+                {comparisonCount > 0 && (
+                  <span className="ml-2 bg-red-500 text-white text-xs rounded-full px-2 py-0.5 font-bold">
+                    {comparisonCount}
+                  </span>
+                )}
+              </Link>
             </div>
           </nav>
         )}
