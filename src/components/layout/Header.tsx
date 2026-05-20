@@ -37,7 +37,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <Link to="/" className="flex items-center" aria-label="Danatharu">
-            <img src="/danatharu-transparent-edit.png" alt="Danatharu" className="h-16 w-auto" />
+            <img src="/danatharu-transparent-edit-400x388.png" alt="Danatharu" className="h-16 w-auto" />
             <span className="ml-2 font-serif text-2xl font-bold">
               <span className="text-danatharu-green">Dana</span>
               <span className="text-danatharu-gold">tharu</span>

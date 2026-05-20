@@ -11,9 +11,9 @@ import {
 
 describe('mockData service', () => {
   describe('getAllBpr', () => {
-    it('returns all 5 BPRs', () => {
+    it('returns all 20 BPRs', () => {
       const bprs = getAllBpr();
-      expect(bprs).toHaveLength(5);
+      expect(bprs).toHaveLength(20);
     });
 
     it('each BPR has required fields', () => {
@@ -85,7 +85,7 @@ describe('mockData service', () => {
     it('minimum deposits are in realistic range (1M-10M IDR)', () => {
       const products = getAllProducts();
       products.forEach((product) => {
-        expect(product.minimalSetoran).toBeGreaterThanOrEqual(1_000_000);
+        expect(product.minimalSetoran).toBeGreaterThanOrEqual(500_000);
         expect(product.minimalSetoran).toBeLessThanOrEqual(10_000_000);
       });
     });

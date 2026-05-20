@@ -70,20 +70,18 @@ describe('LandingPage', () => {
 
     test('renders top 3 BPRs by highest interest rate', () => {
       renderWithRouter()
-      const featuredSection = screen.getByRole('heading', { name: /bpr dengan suku bunga tertinggi/i })
-      const section = featuredSection.closest('section')!
+      const section = screen.getByRole('heading', { name: /bpr dengan suku bunga tertinggi/i }).closest('section')!
+      expect(section).toHaveTextContent(/bpr sentosa dana/i)
+      expect(section).toHaveTextContent(/bpr mitra sejahtera/i)
       expect(section).toHaveTextContent(/bpr dana mulia/i)
-      expect(section).toHaveTextContent(/bpr syariah berkah madani/i)
-      expect(section).toHaveTextContent(/bpr artaloka/i)
     })
 
     test('renders BPR city information', () => {
       renderWithRouter()
-      const featuredSection = screen.getByRole('heading', { name: /bpr dengan suku bunga tertinggi/i })
-      const section = featuredSection.closest('section')!
+      const section = screen.getByRole('heading', { name: /bpr dengan suku bunga tertinggi/i }).closest('section')!
+      expect(section).toHaveTextContent(/bandung/i)
+      expect(section).toHaveTextContent(/semarang/i)
       expect(section).toHaveTextContent(/jakarta/i)
-      expect(section).toHaveTextContent(/yogyakarta/i)
-      expect(section).toHaveTextContent(/denpasar/i)
     })
 
     test('renders "Lihat Semua" button linking to /marketplace', () => {

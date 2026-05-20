@@ -136,15 +136,15 @@ describe('CatalogPage', () => {
   })
 
   describe('Pagination', () => {
-    test('does not render pagination when all items fit on one page', () => {
+    test('renders pagination when items exceed page limit', () => {
       renderWithProviders()
-      expect(screen.queryByText(/halaman/i)).not.toBeInTheDocument()
+      expect(screen.getByText(/halaman/i)).toBeInTheDocument()
     })
 
-    test('shows all items when within page limit', () => {
+    test('shows 6 items per page', () => {
       renderWithProviders()
       const cards = screen.getAllByRole('link', { name: /bpr /i })
-      expect(cards.length).toBe(5)
+      expect(cards.length).toBe(6)
     })
   })
 

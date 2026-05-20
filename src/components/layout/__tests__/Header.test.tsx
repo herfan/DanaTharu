@@ -39,10 +39,10 @@ describe('Header', () => {
     expect(header).toHaveClass('top-0')
   })
 
-  test('has green background color', () => {
+  test('has white background color', () => {
     renderWithProviders(<Header />)
     const header = screen.getByRole('banner')
-    expect(header).toHaveClass('bg-danatharu-green')
+    expect(header).toHaveClass('bg-white')
   })
 
   test('mobile menu is hidden by default on desktop', () => {
