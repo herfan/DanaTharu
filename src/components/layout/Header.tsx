@@ -13,8 +13,8 @@ function NavLink({ to, label, mobile = false, onClick }: { to: string; label: st
   const isActive = location.pathname === to
 
   const baseClasses = mobile
-    ? `font-medium py-2 transition-colors duration-200 ${isActive ? 'text-danatharu-gold font-semibold' : 'text-white hover:text-danatharu-gold'}`
-    : `font-medium transition-colors duration-200 relative ${isActive ? 'text-danatharu-gold' : 'text-white hover:text-danatharu-gold'}`
+    ? `font-medium py-2 transition-colors duration-200 ${isActive ? 'text-danatharu-green font-semibold' : 'text-danatharu-blue hover:text-danatharu-green'}`
+    : `font-medium transition-colors duration-200 relative ${isActive ? 'text-danatharu-green' : 'text-danatharu-blue hover:text-danatharu-green'}`
 
   return (
     <Link to={to} className={baseClasses} onClick={onClick}>
@@ -32,13 +32,16 @@ export default function Header() {
   const comparisonCount = comparisonList.length
 
   return (
-    <header className="sticky top-0 z-50 bg-danatharu-green shadow-lg" role="banner">
+    <header className="sticky top-0 z-50 bg-white shadow-lg border-b border-gray-100" role="banner">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <Link to="/" className="flex items-center" aria-label="Danatharu">
-            <img src="/danatharu-transparent-400x600.png" alt="Danatharu" className="h-10 w-auto" />
-            <span className="ml-2 text-white font-serif text-xl font-bold">Danatharu</span>
+            <img src="/danatharu-transparent-edit.png" alt="Danatharu" className="h-16 w-auto" />
+            <span className="ml-2 font-serif text-2xl font-bold">
+              <span className="text-danatharu-green">Dana</span>
+              <span className="text-danatharu-gold">tharu</span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -52,7 +55,7 @@ export default function Header() {
           <div className="flex items-center space-x-4">
             <Link
               to="/bandingkan"
-              className="hidden md:inline-flex items-center px-4 py-2 bg-danatharu-gold text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-danatharu-gold relative"
+              className="hidden md:inline-flex items-center px-4 py-2 bg-danatharu-green text-white font-semibold rounded-lg hover:bg-danatharu-blue transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-danatharu-green relative"
             >
               Bandingkan
               {comparisonCount > 0 && (
@@ -65,7 +68,7 @@ export default function Header() {
             {/* Mobile Hamburger */}
             <button
               type="button"
-              className="md:hidden p-2 text-white hover:text-danatharu-gold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-danatharu-gold rounded-lg"
+              className="md:hidden p-2 text-danatharu-blue hover:text-danatharu-green transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-danatharu-green rounded-lg"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Menu"
               aria-expanded={mobileMenuOpen}
@@ -83,7 +86,7 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-danatharu-gold border-opacity-30" aria-label="Mobile menu">
+          <nav className="md:hidden py-4 border-t border-gray-200" aria-label="Mobile menu">
             <div className="flex flex-col space-y-3">
               {navLinks.map((link) => (
                 <NavLink
@@ -96,7 +99,7 @@ export default function Header() {
               ))}
               <Link
                 to="/bandingkan"
-                className="relative px-0 py-2 bg-danatharu-gold text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-200"
+                className="relative px-4 py-2 bg-danatharu-green text-white font-semibold rounded-lg hover:bg-danatharu-blue transition-all duration-200"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Bandingkan
