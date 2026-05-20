@@ -27,7 +27,7 @@ export default function LandingPage() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6">
             Simpan Dana Anda dengan Aman dan Menguntungkan
           </h1>
-          <p className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto">
             Bandingkan suku bunga deposito dari BPR terpercaya yang terdaftar di OJK
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -102,7 +102,7 @@ export default function LandingPage() {
             Dipercaya oleh BPR-BPR Terbaik di Indonesia
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
-            {getAllBpr().map((bpr) => (
+            {getAllBpr().slice(0, 5).map((bpr) => (
               <div key={bpr.id} className="flex items-center justify-center">
                 <div className="text-center">
                   <div className="w-16 h-16 mx-auto mb-2 bg-gray-100 rounded-full flex items-center justify-center">
@@ -115,6 +115,14 @@ export default function LandingPage() {
                 </div>
               </div>
             ))}
+            <div className="flex items-center justify-center">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-2 bg-danatharu-gold/10 rounded-full flex items-center justify-center">
+                  <span className="text-xl font-bold text-danatharu-gold">+</span>
+                </div>
+                <p className="text-xs font-semibold text-danatharu-blue">dan BPR lainnya..</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

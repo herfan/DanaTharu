@@ -59,6 +59,7 @@ export function Toast({
     <div
       role="status"
       className={`flex items-center justify-between p-4 rounded-lg shadow-lg text-white animate-slide-in ${typeClasses[type]} ${className}`}
+      style={{ animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
     >
       <div className="flex items-center space-x-3">
         {typeIcons[type]}

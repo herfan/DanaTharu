@@ -11,7 +11,7 @@ export default function TentangKamiPage() {
           <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">
             Tentang Danatharu
           </h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
             Platform aggregator deposito digital yang menghubungkan masyarakat dengan BPR terpercaya di seluruh Indonesia
           </p>
         </div>
@@ -127,7 +127,7 @@ export default function TentangKamiPage() {
       <section className="py-16 bg-danatharu-green text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-serif font-bold mb-4">Mulai Investasi Deposito Anda</h2>
-          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
             Temukan deposito dengan suku bunga terbaik dari BPR terpercaya di seluruh Indonesia
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

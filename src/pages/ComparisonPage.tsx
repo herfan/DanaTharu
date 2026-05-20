@@ -12,7 +12,12 @@ interface ComparisonEntry {
 }
 
 function formatCurrency(value: number): string {
-  return `Rp ${value.toLocaleString('id-ID')}`
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(value).replace(/^IDR\s?/, 'Rp ')
 }
 
 function formatTenor(tenor: number): string {
@@ -25,7 +30,11 @@ function EmptyState() {
       <div className="max-w-4xl mx-auto">
         <Card className="text-center py-16">
           <div className="space-y-6">
-            <div className="text-6xl">📊</div>
+            <div className="w-16 h-16 mx-auto bg-danatharu-blue/10 rounded-full flex items-center justify-center mb-6">
+              <svg className="w-8 h-8 text-danatharu-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            </div>
             <h2 className="text-2xl font-bold text-danatharu-blue">
               Belum ada produk yang dibandingkan
             </h2>
@@ -72,7 +81,7 @@ export default function ComparisonPage() {
     <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-danatharu-blue">Bandingkan Produk</h1>
+          <h1 className="text-3xl font-serif font-bold text-danatharu-blue">Bandingkan Produk</h1>
           <p className="text-gray-600 mt-2">
             Maksimal 3 produk
           </p>
@@ -87,7 +96,7 @@ export default function ComparisonPage() {
                 <button
                   type="button"
                   onClick={() => removeFromComparison(product.id)}
-                  className="absolute top-4 right-4 text-red-500 hover:text-red-700 text-sm font-medium"
+                  className="absolute top-4 right-4 text-red-500 hover:text-red-700 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-red-500 rounded"
                 >
                   Hapus
                 </button>
@@ -95,7 +104,7 @@ export default function ComparisonPage() {
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-xs font-bold text-gray-600">
-                      {bpr.nama.substring(0, 2).toUpperCase()}
+                      {bpr.nama.split(' ').slice(0, 2).map(w => w[0]).join('')}
                     </div>
                     <div>
                       <h3 className="font-semibold text-danatharu-blue">{bpr.nama}</h3>

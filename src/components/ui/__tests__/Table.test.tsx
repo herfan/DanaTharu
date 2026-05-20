@@ -92,7 +92,7 @@ describe('Table', () => {
 
   test('renders empty state when no data', () => {
     render(<Table columns={columns} data={[]} />)
-    expect(screen.getByText('No data available')).toBeInTheDocument()
+    expect(screen.getByText('Tidak ada data tersedia')).toBeInTheDocument()
   })
 
   test('renders numeric column values correctly', () => {

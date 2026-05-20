@@ -163,7 +163,7 @@ export default function CatalogPage() {
                   <div className="flex items-start gap-4 mb-4">
                     <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
                       <span className="text-lg font-bold text-danatharu-green">
-                        {bpr.nama.charAt(4).toUpperCase()}
+                        {bpr.nama.split(' ').slice(0, 2).map(w => w[0]).join('')}
                       </span>
                     </div>
                     <div className="flex-1 min-w-0">

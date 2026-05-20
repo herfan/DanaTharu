@@ -50,7 +50,7 @@ export function Table({
     return (
       <div data-testid="table-container" className={`overflow-x-auto ${className}`}>
         <div className="text-center py-8 text-gray-500">
-          No data available
+          Tidak ada data tersedia
         </div>
       </div>
     )

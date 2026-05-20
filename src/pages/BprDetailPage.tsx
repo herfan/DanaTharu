@@ -6,7 +6,12 @@ import { Button } from '../components/ui/Button'
 import { Checkbox } from '../components/ui/Checkbox'
 
 function formatCurrency(value: number): string {
-  return `Rp ${new Intl.NumberFormat('id-ID').format(value)}`
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(value).replace(/^IDR\s?/, 'Rp ')
 }
 
 function formatTenor(tenor: number): string {
@@ -74,7 +79,7 @@ export default function BprDetailPage() {
           <div className="flex flex-col sm:flex-row items-start gap-4">
             <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
               <span className="text-2xl font-bold text-danatharu-green">
-                {bpr.nama.charAt(4).toUpperCase()}
+                {bpr.nama.split(' ').slice(0, 2).map(w => w[0]).join('')}
               </span>
             </div>
             <div className="flex-1">

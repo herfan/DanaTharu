@@ -70,7 +70,7 @@ export function Carousel({
       <div
         data-testid="carousel-container"
         ref={carouselRef}
-        className="flex transition-transform duration-300 ease-in-out"
+        className="flex transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}

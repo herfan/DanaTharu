@@ -11,7 +11,12 @@ import { ProgressBar } from '../components/ui/ProgressBar'
 import { Checkbox } from '../components/ui/Checkbox'
 
 function formatCurrency(value: number): string {
-  return `Rp ${new Intl.NumberFormat('id-ID').format(value)}`
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(value).replace(/^IDR\s?/, 'Rp ')
 }
 
 function formatTenor(tenor: number): string {
