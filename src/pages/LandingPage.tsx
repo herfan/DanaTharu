@@ -15,8 +15,10 @@ function getTopBprsByRate(count: number) {
     .slice(0, count)
 }
 
+// Pre-compute once since mock data is static
+const topBprs = getTopBprsByRate(3)
+
 export default function LandingPage() {
-  const topBprs = getTopBprsByRate(3)
 
   return (
     <div className="min-h-screen">

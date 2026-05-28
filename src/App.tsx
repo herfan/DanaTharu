@@ -1,17 +1,30 @@
+import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { ComparisonProvider } from './contexts/ComparisonContext'
 import { EnrollmentProvider } from './contexts/EnrollmentContext'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import LandingPage from './pages/LandingPage'
-import CatalogPage from './pages/CatalogPage'
-import BprDetailPage from './pages/BprDetailPage'
-import ComparisonPage from './pages/ComparisonPage'
-import CalculatorPage from './pages/CalculatorPage'
-import EnrollmentPage from './pages/EnrollmentPage'
-import TentangKamiPage from './pages/TentangKamiPage'
-import KebijakanPrivasiPage from './pages/KebijakanPrivasiPage'
-import SyaratKetentuanPage from './pages/SyaratKetentuanPage'
+
+const CatalogPage = lazy(() => import('./pages/CatalogPage'))
+const BprDetailPage = lazy(() => import('./pages/BprDetailPage'))
+const ComparisonPage = lazy(() => import('./pages/ComparisonPage'))
+const CalculatorPage = lazy(() => import('./pages/CalculatorPage'))
+const EnrollmentPage = lazy(() => import('./pages/EnrollmentPage'))
+const TentangKamiPage = lazy(() => import('./pages/TentangKamiPage'))
+const KebijakanPrivasiPage = lazy(() => import('./pages/KebijakanPrivasiPage'))
+const SyaratKetentuanPage = lazy(() => import('./pages/SyaratKetentuanPage'))
+
+function PageLoader() {
+  return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="flex flex-col items-center gap-4">
+        <div className="w-8 h-8 border-2 border-danatharu-green border-t-transparent rounded-full animate-spin" />
+        <p className="text-sm text-gray-500">Memuat...</p>
+      </div>
+    </div>
+  )
+}
 
 function App() {
   return (
@@ -22,14 +35,14 @@ function App() {
           <main className="flex-1">
             <Routes>
               <Route path="/" element={<LandingPage />} />
-              <Route path="/marketplace" element={<CatalogPage />} />
-              <Route path="/bpr/:id" element={<BprDetailPage />} />
-              <Route path="/bandingkan" element={<ComparisonPage />} />
-              <Route path="/kalkulator" element={<CalculatorPage />} />
-              <Route path="/daftar/:bprId/:produkId" element={<EnrollmentPage />} />
-              <Route path="/tentang" element={<TentangKamiPage />} />
-              <Route path="/privasi" element={<KebijakanPrivasiPage />} />
-              <Route path="/syarat" element={<SyaratKetentuanPage />} />
+              <Route path="/marketplace" element={<Suspense fallback={<PageLoader />}><CatalogPage /></Suspense>} />
+              <Route path="/bpr/:id" element={<Suspense fallback={<PageLoader />}><BprDetailPage /></Suspense>} />
+              <Route path="/bandingkan" element={<Suspense fallback={<PageLoader />}><ComparisonPage /></Suspense>} />
+              <Route path="/kalkulator" element={<Suspense fallback={<PageLoader />}><CalculatorPage /></Suspense>} />
+              <Route path="/daftar/:bprId/:produkId" element={<Suspense fallback={<PageLoader />}><EnrollmentPage /></Suspense>} />
+              <Route path="/tentang" element={<Suspense fallback={<PageLoader />}><TentangKamiPage /></Suspense>} />
+              <Route path="/privasi" element={<Suspense fallback={<PageLoader />}><KebijakanPrivasiPage /></Suspense>} />
+              <Route path="/syarat" element={<Suspense fallback={<PageLoader />}><SyaratKetentuanPage /></Suspense>} />
             </Routes>
           </main>
           <Footer />

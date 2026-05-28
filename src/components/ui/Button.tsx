@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react'
+import { memo, type ButtonHTMLAttributes, type ReactNode } from 'react'
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode
@@ -20,7 +20,7 @@ const sizeClasses: Record<string, string> = {
   lg: 'px-6 py-3 text-lg',
 }
 
-export function Button({
+export const Button = memo(function Button({
   children,
   variant = 'primary',
   size = 'md',
@@ -48,4 +48,4 @@ export function Button({
       {children}
     </button>
   )
-}
+})

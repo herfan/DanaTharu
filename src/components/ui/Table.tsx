@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, memo } from 'react'
 
 export interface Column {
   key: string
@@ -14,7 +14,7 @@ export interface TableProps {
 
 type SortDirection = 'asc' | 'desc' | null
 
-export function Table({
+export const Table = memo(function Table({
   columns,
   data,
   onRowClick,
@@ -107,4 +107,4 @@ export function Table({
       </table>
     </div>
   )
-}
+})

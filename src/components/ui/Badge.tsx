@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { memo, type ReactNode } from 'react'
 
 export interface BadgeProps {
   children: ReactNode
@@ -14,7 +14,7 @@ const variantClasses: Record<string, string> = {
   default: 'bg-gray-100 text-gray-800',
 }
 
-export function Badge({
+export const Badge = memo(function Badge({
   children,
   variant = 'default',
   className = '',
@@ -30,4 +30,4 @@ export function Badge({
       {children}
     </span>
   )
-}
+})

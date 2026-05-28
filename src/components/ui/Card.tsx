@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { memo, type ReactNode } from 'react'
 
 export interface CardProps {
   children: ReactNode
@@ -9,7 +9,7 @@ export interface CardProps {
   onClick?: () => void
 }
 
-export function Card({
+export const Card = memo(function Card({
   children,
   title,
   subtitle,
@@ -41,4 +41,4 @@ export function Card({
       {children}
     </div>
   )
-}
+})
