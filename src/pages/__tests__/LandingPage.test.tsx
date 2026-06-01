@@ -41,14 +41,14 @@ describe('LandingPage', () => {
       expect(screen.getByRole('heading', { name: /mengapa memilih danatharu/i })).toBeInTheDocument()
     })
 
-    test('renders "Terdaftar & Diawasi OJK" benefit', () => {
+    test('renders "Transparan & Mudah" benefit', () => {
       renderWithRouter()
-      expect(screen.getByText(/terdaftar & diawasi ojk/i)).toBeInTheDocument()
+      expect(screen.getByText(/transparan & mudah/i)).toBeInTheDocument()
     })
 
-    test('renders "Dijamin LPS" benefit', () => {
+    test('renders "Mitra BPR Terkurasi" benefit', () => {
       renderWithRouter()
-      expect(screen.getByText(/dijamin lps/i)).toBeInTheDocument()
+      expect(screen.getByText(/mitra bpr terkurasi/i)).toBeInTheDocument()
     })
 
     test('renders "Suku Bunga Kompetitif" benefit', () => {
