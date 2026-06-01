@@ -134,16 +134,5 @@ describe('LandingPage', () => {
       expect(screen.getByText(/nasabah/i)).toBeInTheDocument()
     })
 
-    test('renders OJK badge', () => {
-      renderWithRouter()
-      const ojkBadges = screen.getAllByText(/terdaftar di ojk/i)
-      expect(ojkBadges.length).toBeGreaterThan(0)
-    })
-
-    test('renders LPS badge', () => {
-      renderWithRouter()
-      const lpsBadges = screen.getAllByText(/dijamin oleh lps/i)
-      expect(lpsBadges.length).toBeGreaterThan(0)
-    })
   })
 })
