@@ -51,7 +51,7 @@ describe('EnrollmentPage', () => {
       const nextButton = screen.getByRole('button', { name: /selanjutnya/i })
       await user.click(nextButton)
       await waitFor(() => {
-        expect(screen.getByText(/complete all required fields/i)).toBeInTheDocument()
+        expect(screen.getByText(/harap lengkapi semua field/i)).toBeInTheDocument()
       })
     })
 

@@ -80,8 +80,8 @@ export function RangeSlider({
         </label>
       )}
       <div className="flex justify-between mb-2 text-sm font-semibold text-danatharu-green">
-        <span>Rp {localValues[0]}</span>
-        <span>Rp {localValues[1]}</span>
+        <span>Rp {localValues[0].toLocaleString('id-ID')}</span>
+        <span>Rp {localValues[1].toLocaleString('id-ID')}</span>
       </div>
       <div className="relative h-6">
         <div className="absolute top-1/2 -translate-y-1/2 w-full h-2 bg-gray-200 rounded-full">

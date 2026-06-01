@@ -120,6 +120,24 @@ function Step2DataAlamat() {
   )
 }
 
+function formatFileSize(bytes: number): string {
+  if (bytes < 1024) return `${bytes} B`
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`
+}
+
+function FileInfo({ file }: { file: File }) {
+  return (
+    <div className="flex items-center gap-2 mt-1 text-xs text-gray-500">
+      <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+      <span>{file.name}</span>
+      <span className="text-gray-400">({formatFileSize(file.size)})</span>
+    </div>
+  )
+}
+
 function Step3UploadDokumen() {
   const { formData, updateFormData } = useEnrollment()
   const step3 = formData.step3
@@ -162,6 +180,7 @@ function Step3UploadDokumen() {
           }}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-danatharu-gold focus:border-transparent"
         />
+        {step3?.ktpFile && <FileInfo file={step3.ktpFile} />}
         {ktpPreview && (
           <div className="mt-2">
             <img src={ktpPreview} alt="KTP preview" className="max-w-xs rounded-lg border" />
@@ -183,6 +202,7 @@ function Step3UploadDokumen() {
           }}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-danatharu-gold focus:border-transparent"
         />
+        {step3?.selfieFile && <FileInfo file={step3.selfieFile} />}
         {selfiePreview && (
           <div className="mt-2">
             <img src={selfiePreview} alt="Selfie preview" className="max-w-xs rounded-lg border" />

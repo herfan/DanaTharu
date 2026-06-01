@@ -14,6 +14,8 @@ const EnrollmentPage = lazy(() => import('./pages/EnrollmentPage'))
 const TentangKamiPage = lazy(() => import('./pages/TentangKamiPage'))
 const KebijakanPrivasiPage = lazy(() => import('./pages/KebijakanPrivasiPage'))
 const SyaratKetentuanPage = lazy(() => import('./pages/SyaratKetentuanPage'))
+const BantuanPage = lazy(() => import('./pages/BantuanPage'))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
 function PageLoader() {
   return (
@@ -43,6 +45,8 @@ function App() {
               <Route path="/tentang" element={<Suspense fallback={<PageLoader />}><TentangKamiPage /></Suspense>} />
               <Route path="/privasi" element={<Suspense fallback={<PageLoader />}><KebijakanPrivasiPage /></Suspense>} />
               <Route path="/syarat" element={<Suspense fallback={<PageLoader />}><SyaratKetentuanPage /></Suspense>} />
+              <Route path="/bantuan" element={<Suspense fallback={<PageLoader />}><BantuanPage /></Suspense>} />
+              <Route path="*" element={<Suspense fallback={<PageLoader />}><NotFoundPage /></Suspense>} />
             </Routes>
           </main>
           <Footer />

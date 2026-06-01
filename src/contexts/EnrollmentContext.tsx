@@ -40,7 +40,7 @@ export function EnrollmentProvider({ children }: { children: React.ReactNode }) 
 
   const nextStep = useCallback(() => {
     if (!validateStep(currentStep, formData)) {
-      setError('Please complete all required fields before continuing')
+      setError('Harap lengkapi semua field yang wajib diisi')
       return
     }
     setError(null)

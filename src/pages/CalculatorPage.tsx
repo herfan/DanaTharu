@@ -21,7 +21,7 @@ function formatCurrency(value: number): string {
     currency: 'IDR',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
-  }).format(value).replace('Rp', 'Rp').replace('IDR', 'Rp').replace(/\s+/g, ' ').trim()
+  }).format(value).replace(/\s+/g, ' ').trim()
 }
 
 function calculateFlat(principal: number, rate: number, tenor: number): CalculationResult {
